@@ -20,12 +20,29 @@ namespace Sagau_Rares_Lab2.Pages.Categories
         }
 
         public IList<Category> Category { get;set; } = default!;
+        public BookData bookData { get; set; }
+        public int CategoryID { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? id, int? bookCategoryID)
         {
-            if (_context.Category != null)
+            bookData = new BookData();
+            bookData = new BookData();
+            bookData.Categories = await _context.Category
+                .Include(c => c.BookCategories)
+                .ThenInclude(bc => bc.Book)
+                .ThenInclude(b => b.Author)
+                .OrderBy(c => c.CategoryName)
+                .ToListAsync();
+
+            if (id != null)
             {
-                Category = await _context.Category.ToListAsync();
+                CategoryID = id.Value;
+                Category category = bookData.Categories.SingleOrDefault(c => c.ID == id.Value);
+
+                if (category != null)
+                {
+                    bookData.Books = category.BookCategories.Select(bc => bc.Book).ToList();
+                }
             }
         }
     }
