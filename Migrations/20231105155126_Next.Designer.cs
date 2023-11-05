@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sagau_Rares_Lab2.Data;
 
@@ -11,9 +12,10 @@ using Sagau_Rares_Lab2.Data;
 namespace Sagau_Rares_Lab2.Migrations
 {
     [DbContext(typeof(Sagau_Rares_Lab2Context))]
-    partial class Sagau_Rares_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20231105155126_Next")]
+    partial class Next
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
