@@ -70,7 +70,7 @@ namespace Sagau_Rares_Lab2.Pages.Books
             bookToUpdate,
             "Book",
             i => i.Title, i => i.Author,
-            i => i.Price, i => i.PublishingDate, i => i.PublisherID))
+            i => i.Price, i => i.PublishingDate, i => i.PublisherID, i => i.AuthorID))
             {
                 UpdateBookCategories(_context, selectedCategories, bookToUpdate);
                 await _context.SaveChangesAsync();

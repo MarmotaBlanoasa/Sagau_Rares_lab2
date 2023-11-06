@@ -15,6 +15,7 @@ namespace Sagau_Rares_Lab2.Models
                 return FirstName + " " + LastName;
             }
         }
+        public ICollection<Book> Books { get; set; }
 
     }
 }

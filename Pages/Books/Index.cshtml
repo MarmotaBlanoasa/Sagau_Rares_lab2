@@ -22,12 +22,13 @@
 </form>
 <table class="table">
     <thead>
-        <tr>
-            <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
+        <tr> 
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
                     @Html.DisplayNameFor(model => model.Book[0].Title)
-            </th>
             </a>
+            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].Price)
             </th>
@@ -37,11 +38,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].Publisher.PublisherName)
             </th>
-            <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
+            
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
                 @Html.DisplayNameFor(model => model.Book[0].Author.FullName)
+                </a>
             </th>
-            </a>
+            
             
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].BookCategories)
