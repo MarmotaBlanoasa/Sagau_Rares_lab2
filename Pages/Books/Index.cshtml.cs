@@ -55,24 +55,24 @@ namespace Sagau_Rares_Lab2.Pages.Books
                     .Where(i => i.ID == id.Value).Single();
                     BookD.Categories = book.BookCategories.Select(s => s.Category);
                 }
-                switch (sortOrder)
-                {
-                    case "title_desc":
-                        BookD.Books = BookD.Books.OrderByDescending(s =>
-                       s.Title);
-                        break;
-                    case "author_desc":
-                        BookD.Books = BookD.Books.OrderByDescending(s =>
-                       s.Author.FullName);
-                        break;
-                    case "author":
-                        BookD.Books = BookD.Books.OrderBy(s =>
-                       s.Author.FullName);
-                        break;
-                    default:
-                        BookD.Books = BookD.Books.OrderBy(s => s.Title);
-                        break;
-                }
+            }
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    BookD.Books = BookD.Books.OrderByDescending(s =>
+                   s.Title);
+                    break;
+                case "author_desc":
+                    BookD.Books = BookD.Books.OrderByDescending(s =>
+                   s.Author.FullName);
+                    break;
+                case "author":
+                    BookD.Books = BookD.Books.OrderBy(s =>
+                   s.Author.FullName);
+                    break;
+                default:
+                    BookD.Books = BookD.Books.OrderBy(s => s.Title);
+                    break;
             }
         }
     }
