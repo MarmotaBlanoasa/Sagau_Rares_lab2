@@ -21,5 +21,19 @@ namespace Sagau_Rares_Lab2.Data
         public DbSet<Sagau_Rares_Lab2.Models.Author>? Author { get; set; }
 
         public DbSet<Sagau_Rares_Lab2.Models.Category>? Category { get; set; }
+
+        public DbSet<Sagau_Rares_Lab2.Models.Member>? Member { get; set; }
+
+        public DbSet<Sagau_Rares_Lab2.Models.Borrowing>? Borrowing { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configure the one-to-one relationship between Book and Borrowing
+            modelBuilder.Entity<Book>()
+                .HasOne(b => b.Borrowing) // Book has one Borrowing
+                .WithOne(br => br.Book) // Borrowing has one Book
+                .HasForeignKey<Borrowing>(br => br.BookID); // The FK in Borrowing is BookID
+        }
     }
 }
